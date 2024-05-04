@@ -1,0 +1,25 @@
+﻿@using ToonLoonWeb.Models
+@inject NavigationManager NavigationManager
+@using ToonLoonWeb.Client.Pages
+
+<div class="ToonCardview" @onclick="NavigateToToonOverview">
+        <div class="cardview-image">
+            <img src="@Toon?.CoverURL"/>
+        </div
+
+    <div class="Cardview-details">
+        <h5 style="color: #F6B17A;">Title: @Toon?.MangaTitle</h5>
+        <h5>Author: @Toon?.Author</h5>
+        <h5>Description: <br />@Toon?.MangaDescription</h5>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Toon? Toon { get; set; }
+
+    void NavigateToToonOverview()
+    {
+        NavigationManager.NavigateTo($"toonOverview/{Toon?.MangaId}", forceLoad: true);
+    }
+}

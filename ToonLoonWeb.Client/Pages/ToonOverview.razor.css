@@ -1,0 +1,53 @@
+﻿.ToonOverview-container{
+    display:grid;
+    grid-template-rows: repeat(3, 1fr);
+    width:100%;
+    height:auto;
+    
+}
+.Top-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-image: linear-gradient(to bottom, #2D3250, #0C0D15);
+    border-radius: 10px;
+}
+.ToonOverview-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.ToonOverview-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    margin:3rem 0 0 0;
+}
+#StartReading{
+    padding:18px 32px;
+    font-size:16px;
+    border:none;
+    border-radius: 10px;
+}
+#Save{
+    background:none;
+    border:none;
+}
+.Top-content img {
+    height: 400px;
+    width: auto;
+    margin: 0 2rem 0 0;
+}
+.Top-content h1 {
+    font-size: 80px;
+    color: #F6B17A;
+    text-overflow: ellipsis;
+}
+.Top-content h5 {
+    color: #C3C3C3;
+}

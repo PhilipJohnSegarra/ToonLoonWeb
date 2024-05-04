@@ -1,0 +1,35 @@
+﻿.ToonCardview {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    width: 300px;
+    height: auto;
+    border: solid 1px gray;
+    background-image: linear-gradient(to bottom, #2D3250, #0C0D15);
+    border-radius:10px;
+    margin:1rem 1rem 0 0;
+    cursor:pointer;
+}
+.cardview-image{
+    width:100%;
+    height: auto;
+}
+.cardview-image img{
+    width:100%;
+    height: auto;
+    max-height: 300px;
+    object-fit:cover;
+}
+.Cardview-details{
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    align-items:start;
+    margin: 1rem 0 0 0;
+    padding: 10px 1rem;
+}
+.Cardview-details h5 {
+    color: #C3C3C3;
+    font-size: 15px;
+}

@@ -1,0 +1,49 @@
+﻿@page "/"
+@rendermode InteractiveWebAssembly
+@inject IJSRuntime JS
+@using ToonLoonWeb.Models
+@using ToonLoonWeb.Client.Pages.HomeComponent
+
+<PageTitle>Home</PageTitle>
+
+<h1>Recommended</h1>
+<div style="display:flex;flex-wrap:wrap;">
+    @if (!isLoading)
+    {
+        foreach (var manga in MangaList)
+        {
+            <ToonCardView Toon="manga" />
+        }
+    }
+    else
+    {
+        <h3>Loading Toons...</h3>
+    }
+</div>
+
+
+
+
+
+@code {
+    // A list of User objects to store the users
+    private List<Toon> MangaList = new();
+    // A flag to indicate if the component is still loading
+    private bool isLoading = true;
+    // The name of the new user to add
+    private string? currentUser;
+    // Retrieves the list of users from Firebase after the component has rendered
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Retrieves the list of users from Firebase
+            MangaList = await JS.InvokeAsync<List<Toon>>("getToons");
+            // Sets isLoading to false to indicate that the component has finished loading
+            isLoading = false;
+            // Forces the component to re-render
+            StateHasChanged();
+        }
+    }
+}
+

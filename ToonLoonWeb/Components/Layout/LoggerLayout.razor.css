@@ -1,0 +1,9 @@
+﻿.logger-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    justify-items:center;
+    min-height:100vh;
+    width:100%;
+    background-color:yellow;
+}
