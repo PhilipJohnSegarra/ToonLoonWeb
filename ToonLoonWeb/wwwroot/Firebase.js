@@ -48,7 +48,8 @@ window.getToons = async () => {
         MangaTitle: doc.get("MangaTitle"),
         CoverURL: doc.get("CoverURL"),
         Author: doc.get("Author"),
-        MangaDescription: doc.get("MangaDescription")
+        MangaDescription: doc.get("MangaDescription"),
+        Genre: doc.get("Genre")
     }));
 
     console.log(dataArray);
@@ -65,7 +66,8 @@ window.getToonData = async (id) => {
             MangaTitle: docSnapshot.get("MangaTitle"),
             CoverURL: docSnapshot.get("CoverURL"),
             Author: docSnapshot.get("Author"),
-            MangaDescription: docSnapshot.get("MangaDescription")
+            MangaDescription: docSnapshot.get("MangaDescription"),
+            Genre: docSnapshot.get("Genre")
         };
 
         console.log(data);

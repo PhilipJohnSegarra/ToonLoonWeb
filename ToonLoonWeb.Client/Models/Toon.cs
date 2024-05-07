@@ -7,6 +7,7 @@
         public string? MangaDescription { get; set; }
         public string? MangaId { get; set; }
         public string? MangaTitle { get; set; }
+        public string? Genre { get; set; }
     }
     public class Chapter
     {

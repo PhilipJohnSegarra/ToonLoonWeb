@@ -5,21 +5,36 @@
 @using ToonLoonWeb.Client.Pages.HomeComponent
 
 <PageTitle>Home</PageTitle>
+<div class="page">
+    <nav class="navbar bg-body-tertiary">
+        <form class="container-fluid">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </span>
+                <input type="text" class="form-control" placeholder="search" aria-label="Username" aria-describedby="basic-addon1" >
+            </div>
+        </form>
+    </nav>
 
-<h1>Recommended</h1>
-<div style="display:flex;flex-wrap:wrap;">
-    @if (!isLoading)
-    {
-        foreach (var manga in MangaList)
+    <h3>Recommended</h3>
+    <div style="display:flex;flex-wrap:wrap; width:100%;height:auto;justify-content:center;box-sizing:border-box;">
+        @if (!isLoading)
         {
-            <ToonCardView Toon="manga" />
+            foreach (var manga in MangaList)
+            {
+                <ToonCardView Toon="manga" />
+            }
         }
-    }
-    else
-    {
-        <h3>Loading Toons...</h3>
-    }
+        else
+        {
+            <h3>Loading Toons...</h3>
+        }
+    </div>
 </div>
+
 
 
 
@@ -28,6 +43,8 @@
 @code {
     // A list of User objects to store the users
     private List<Toon> MangaList = new();
+    private List<Toon> MangaListSearchResults = new();
+    private string MangaListSearch = "";
     // A flag to indicate if the component is still loading
     private bool isLoading = true;
     // The name of the new user to add
@@ -45,5 +62,7 @@
             StateHasChanged();
         }
     }
+
+
 }
 
