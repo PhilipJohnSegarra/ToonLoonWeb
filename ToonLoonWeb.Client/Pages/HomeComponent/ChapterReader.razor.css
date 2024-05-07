@@ -1,0 +1,17 @@
+﻿.ChapterReader-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    align-items:center;
+    width:100%;
+    height:auto;
+}
+.ChapterReader-reader {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    max-width:500px;
+}

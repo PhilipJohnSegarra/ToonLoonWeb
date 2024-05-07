@@ -75,6 +75,48 @@ window.getToonData = async (id) => {
         return null;
     }
 };
+window.getToonChapters = async (id) => {
+    const docRef = doc(collection(db, "Toon"), id);
+    const docSnapshot = await getDoc(docRef);
 
-const data = await window.getToonData("4qV0X7SPKysiYRA9O0Uu");
-console.log(data);
+    if (docSnapshot.exists()) {
+        const data = {
+            MangaID: docSnapshot.id, // Corrected line
+            Chapters: []
+        };
+
+        // Get the subcollection reference for chapters
+        const chaptersRef = collection(docRef, "Chapters");
+        // Get all documents (chapters) in the chapters subcollection
+        const chaptersSnapshot = await getDocs(chaptersRef);
+
+        // Iterate over each chapter document
+        chaptersSnapshot.forEach((chapterDoc) => {
+            // Initialize an array to hold images for the current chapter
+            let images = [];
+            // Get the images array from the chapter document
+            const imagesArray = chapterDoc.get("images");
+
+            // Iterate over each image in the images array
+            imagesArray.forEach((image) => {
+                // Assuming the image structure, you can push each image URL or other details
+                images.push(image);
+            });
+
+            // Push chapter data into the Chapters array
+            data.Chapters.push({
+                ChapterID: chapterDoc.id,
+                // Other chapter details if needed
+                Images: images // Assign the images array to the chapter data
+            });
+        });
+
+        console.log(data.Chapters);
+        return data.Chapters;
+    } else {
+        console.log("Document does not exist");
+        return null;
+    }
+};
+
+

@@ -8,4 +8,9 @@
         public string? MangaId { get; set; }
         public string? MangaTitle { get; set; }
     }
+    public class Chapter
+    {
+        public string? ChapterID { get; set; }
+        public string[]? Images { get; set; }
+    }
 }

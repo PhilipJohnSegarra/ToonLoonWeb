@@ -1,5 +1,6 @@
 ﻿@page "/toonOverview/{MangaID}"
 @rendermode InteractiveWebAssembly
+@inject NavigationManager NavigationManager
 @inject IJSRuntime JS
 @using ToonLoonWeb.Models
 
@@ -29,8 +30,15 @@
         <div class="main-content">
             
         </div>
+        <h2 style="align-self:start; margin:2rem 0 0 0;">Chapters</h2>
         <div class="Chapter-list">
-
+            @{
+                @foreach (var chapter in chapterList!)
+                {
+                    <button @onclick="() => NavigateToToonOverview(chapterList.IndexOf(chapter))" class="Chapter-button">Chapter @chapter.ChapterID</button>
+                }
+            }
+            
         </div>
     </div>
 }
@@ -42,6 +50,9 @@ else
 
 @code {
     public Toon? toon { get; set; }
+    public List<Chapter>? chapterList { get; set; }
+    public Chapter? chapter { get; set; }
+    public int? index { get;set; }
     private bool isLoading = true;
 
     [Parameter]
@@ -53,11 +64,17 @@ else
         {
             // Retrieves the list of users from Firebase
             toon = await JS.InvokeAsync<Toon>("getToonData", MangaID);
+            chapterList = await JS.InvokeAsync<List<Chapter>>("getToonChapters", MangaID);
             // Sets isLoading to false to indicate that the component has finished loading
             isLoading = false;
             // Forces the component to re-render
             StateHasChanged();
         }
+    }
+
+    void NavigateToToonOverview(int index)
+    {
+        NavigationManager.NavigateTo($"{MangaID}/Chapters/{index}", forceLoad: true);
     }
 }
 
