@@ -1,7 +1,7 @@
 ﻿.ChapterReader-container{
     display:flex;
     flex-direction:column;
-    justify-content:start;
+    justify-content:center;
     align-items:center;
     width:100%;
     height:auto;
@@ -14,4 +14,20 @@
     width: 100%;
     height: auto;
     max-width:500px;
+}
+.ChapterReader-controls{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    height:auto;
+    margin:1rem 0 1rem 0;
+    box-sizing:border-box;
+}
+.ChapterReader-button {
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    background-color: #0C0D15;
+    color: #F6B17A;
 }

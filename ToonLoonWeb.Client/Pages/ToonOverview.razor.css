@@ -70,4 +70,7 @@
     font-size: 16px;
     border: none;
     border-radius: 10px;
+    margin: 0 1rem 1rem 0;
+    border: solid 1px #F6B17A;
+    background-color:transparent;
 }

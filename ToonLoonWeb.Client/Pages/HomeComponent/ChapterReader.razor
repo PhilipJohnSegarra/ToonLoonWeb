@@ -7,6 +7,9 @@
 {
     <div class="ChapterReader-container">
         <div class="ChapterReader-controls">
+            <button class="ChapterReader-button" @onclick="Decrement" disabled="@isPrevDisabled">Prev</button>
+            <h5>Chapter @index</h5>
+            <button class="ChapterReader-button" @onclick="Increment" disabled="@isNextDisabled">Next</button>
         </div>
         <div class="ChapterReader-reader">
             @{
@@ -35,6 +38,8 @@ else
     [Parameter]
     public int index { get; set; }
     private bool isLoading = true;
+    private bool isNextDisabled = false;
+    private bool isPrevDisabled = true;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -47,6 +52,31 @@ else
             isLoading = false;
             // Forces the component to re-render
             StateHasChanged();
+        }
+    }
+
+    private void Increment()
+    {
+        isPrevDisabled = false;
+        if(index >= 0)
+        {
+            index++;
+        }
+        else if (index == chapterList.Count - 2)
+        {
+            isNextDisabled = true;
+        }
+    }
+    private void Decrement()
+    {
+        isNextDisabled = false;
+        if (index >= 0)
+        {
+            index--;
+        }
+        else if(index == 0)
+        {
+            isPrevDisabled = true;
         }
     }
 }
