@@ -3,6 +3,8 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JS
 @using ToonLoonWeb.Models
+@using ToonLoonWeb.Client.Models
+@using Microsoft.AspNetCore.Authorization
 
 <PageTitle>@toon?.MangaTitle</PageTitle>
 
@@ -54,6 +56,9 @@ else
     public Chapter? chapter { get; set; }
     public int? index { get;set; }
     private bool isLoading = true;
+    private bool IsFavoriteToggled = false;
+
+ 
 
     [Parameter]
     public string? MangaID { get; set; }
