@@ -1,14 +1,27 @@
 ﻿@page "/coins"
+@rendermode InteractiveWebAssembly
 
 <nav class="navbar bg-body-tertiary" style="background-color:#2C314E;border-radius:10px;">
     <div class="container-fluid">
-        <a class="navbar-brand text-light">&#36;0.00</a>
+        <a class="navbar-brand text-light">&#36;@coins</a>
         <form class="d-flex" role="search">
-            <button class="btn btn-outline-light" type="submit" style="background-color:#FD9644">Top Up</button>
+            <button @onclick="TopUp" class="btn btn-outline-light" type="button" style="background-color:#FD9644">Top Up</button>
         </form>
     </div>
 </nav>
+<div style="width:100%;height:100%;display:flex;f;flex-direction:column;justify-content:center;align-items:center;margin:4rem 0 0 0;">
+    <h5>Coin Feature is Coming soon!</h5>
+    <img style="width:50%;height:auto;" src="sadbaby.jpg" />
+</div>
 
 @code {
+    private double coins { get; set; } = 0;
+    int count = 0;
 
+    void TopUp()
+    {
+        coins += 20;
+        count++;
+
+    }
 }
