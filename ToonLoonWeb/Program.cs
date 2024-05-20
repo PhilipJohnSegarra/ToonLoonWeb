@@ -6,7 +6,10 @@ using ToonLoonWeb.Components;
 using ToonLoonWeb.Components.Account;
 using ToonLoonWeb.Data;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    EnvironmentName = Environments.Production
+});
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -36,6 +39,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
 
 var app = builder.Build();
 
